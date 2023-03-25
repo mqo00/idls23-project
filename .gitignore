@@ -1,3 +1,12 @@
+.DS_Store
+API_KEYS.txt
+
+# Ignore raw data files before closer look to de-identify
+naive_dataset/
+
+# Ignore the node_modules directory
+node_modules/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

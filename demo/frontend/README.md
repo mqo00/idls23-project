@@ -1,5 +1,6 @@
 # Model Demo
 
+## Frontend
 * Input (Q): 
   * auto generate example of a question,
   * a text box for copy/paste new question
@@ -12,6 +13,9 @@
 * Human-Eval:
   * feedback for retriever produced examples: thumb up & down?
   * additional feedback for model answer: edits & thumb up & down 
+
+## Backend
+* data processing: just for loop parse all 200 test Q&A pairs & generate responses
 
 ## Available Scripts
 

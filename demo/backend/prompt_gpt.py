@@ -38,7 +38,7 @@ class AskGPT():
         )
         gpt_answer = response['choices'][0]['message']['content']
         response["prompt"] = messages
-        write_to_json(response, file='gpt_responses.json')
+        write_to_json(response, file='gpt_response.json')
         return gpt_answer
 
 

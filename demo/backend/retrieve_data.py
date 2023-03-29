@@ -96,7 +96,7 @@ class QAGPT_DataLoader():
         k = self.hash_trio(q, gpt_answer)
         d = {"question": q, "gpt_answer": gpt_answer, "hash": k}
         self.qa_trios[k] = d
-        write_to_json(d, 'gpt_new_questions.json')
+        write_to_json(d, 'gpt_newq.json')
         return k
 
     # incorrect/unhelpful/great: -1/0/1?
@@ -105,6 +105,6 @@ class QAGPT_DataLoader():
         # update_dict = {"label": "unhelpful", "edit": "new answer"}
         d.update(update_dict)
         self.qa_trios[k] = d
-        write_to_json(d, 'labeled_qa.json')
+        write_to_json(d, 'label_qa.json')
         return d
     

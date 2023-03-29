@@ -3,7 +3,7 @@ API_KEYS.txt
 test-q.txt
 test-a.txt
 test-gpt.txt
-gpt_eval.json
+*.json
 gpt_response.json
 
 # Ignore raw data files before closer look to de-identify

@@ -6,12 +6,12 @@
   * a text box for copy/paste new question
 * Model:
   * submit request to gpt3.5 & gpt4 for answer given prompt
-  * switch different models: with/out retriever, finetunelm, etc.
-  * demo the retrieved examples
+  * **TODO:** switch different models: with/out retriever, finetunelm, etc.
+  * **TODO:** demo the retrieved examples
 * Output (A):
-  * display nli & machine eval scores, store data
+  * **TODO:** display nli & machine eval scores, store data
 * Human-Eval:
-  * feedback for retriever produced examples: thumb up & down?
+  * **TODO:** feedback for retriever produced examples: thumb up & down
   * additional feedback for model answer: edits & thumb up & down 
 
 ## Backend

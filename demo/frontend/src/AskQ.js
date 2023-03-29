@@ -22,13 +22,11 @@ function AskQ ({newQA, reset}) {
         setAnswer("Loading ...");
         newQA({"key": "", "answer": ""});
         event.preventDefault();
-        // const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/submit_question`, { question });
         const { answer, hash } = await postq_geta(question);
         setAnswer(answer);
         newQA({"key": hash, "answer": answer});
     }
 
-    // an input text box & button for submit question rows="5" cols="50"
     return (
         <div className="qa-block">
             <div className="qa">

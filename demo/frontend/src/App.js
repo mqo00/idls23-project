@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import RandQA from "./RandQA";
 import AskQ from "./AskQ";
 import HumanEvalA from "./HumanEvalA";
-
 import './App.css';
 
-// App component
 // Model selection state variable
 // Get/Post question & answer component
 // Evlaute answer component: humanEval & machineEval display
-
 function App() {
 
   const [state, setState] = useState({

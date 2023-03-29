@@ -32,27 +32,19 @@ function HumanEvalA ({qaKey, gpt_answer, resetQA}) {
 
     // label: Incorrect, Unhelpful, Great with three different buttons, submit to backend
     // also enable edit for gpt-answer, how would you change the generation
-    // an improve button, after click there's a textarea with the answer and a confirm button to submit to backend rows="5" cols="50"
     return (
         <div className="human-eval">
             <h2>Evaluate & Edit model's answer to improve it</h2>
             <form className="eval-form" onSubmit={handleSubmit}>
-                <ToggleButtonGroup className='label-btn'
-                orientation="vertical"
-                value={humanEval.label}
-                exclusive
-                onChange={handleChange}
-                >
-                <ToggleButton name="label" color="error" value="incorrect" aria-label="incorrect">
-                    <SentimentVeryDissatisfied />Incorrect
-                </ToggleButton>
-                <ToggleButton name="label" color="warning" value="unhelpful" aria-label="unhelpful">
-                    <SentimentNeutral />Unhelpful
-                </ToggleButton>
-                <ToggleButton name="label" color="success" value="great" aria-label="great">
-                    <SentimentVerySatisfied />Great
-                </ToggleButton>
-                <input className="submit-btn" type="submit" value="Subimt Feedback" />
+                <ToggleButtonGroup className='label-btn' orientation="vertical"
+                value={humanEval.label} exclusive onChange={handleChange}>
+                    <ToggleButton name="label" color="error" value="incorrect" aria-label="incorrect">
+                        <SentimentVeryDissatisfied />Incorrect</ToggleButton>
+                    <ToggleButton name="label" color="warning" value="unhelpful" aria-label="unhelpful">
+                        <SentimentNeutral />Unhelpful</ToggleButton>
+                    <ToggleButton name="label" color="success" value="great" aria-label="great">
+                        <SentimentVerySatisfied />Great</ToggleButton>
+                    <input className="submit-btn" type="submit" value="Subimt Feedback" />
                 </ToggleButtonGroup>
                 <div className="user-input">
                     <textarea name="improve" onChange={handleChange} value={humanEval.improve}

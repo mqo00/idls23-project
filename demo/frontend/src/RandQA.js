@@ -14,9 +14,6 @@ function RandQA ({newQA, reset}) {
 
     const getRandomQA = async () => {
         const { question, ta_answer, gpt_answer, hash } = await get_qa();
-        // axios.get(`${process.env.REACT_APP_API_URL}/get_random_qa`,);
-        // unpack question, ta_answer, gpt_answer, hash from data
-        // const { question, ta_answer, gpt_answer, hash } = data;
         setQA({question, ta_answer, gpt_answer, hash});
         newQA({"key": hash, "answer": gpt_answer});
     }
@@ -26,7 +23,6 @@ function RandQA ({newQA, reset}) {
     // display the question and both answers side by side
     return (
     <div className="qa-block">
-        {/* <button onClick={getRandomQA}>Get Random QA</button> */}
         <div className="qa">
             <div className="question">
                 <h2>Question</h2>

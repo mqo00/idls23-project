@@ -2,7 +2,7 @@ import os
 import json
 # from pathlib import Path
 
-def write_to_json(json_obj, file='gpt_responses.json'):
+def write_to_json(json_obj, file='gpt_response.json'):
     # p = Path(directory)
     # p.mkdir(parents=True, exist_ok=True)
     if not os.path.exists(file): # create file not exist and write empty list

@@ -1,5 +1,10 @@
 .DS_Store
 API_KEYS.txt
+test-q.txt
+test-a.txt
+test-gpt.txt
+gpt_eval.json
+gpt_responses.json
 
 # Ignore raw data files before closer look to de-identify
 naive_dataset/

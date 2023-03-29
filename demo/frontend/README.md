@@ -43,6 +43,7 @@
 
 * `cd frontend`
   * `export REACT_APP_API_URL=http://ec2-3-136-19-37.us-east-2.compute.amazonaws.com:8080/api`
+  * or use a .env file, which contain the above if on EC2, and the follows if locally: `REACT_APP_API_URL=http://localhost:8080/api`
   * `npm start` (port 3000)
 
 * Here we go! Checkout the web app at [shorturl.at/giwFY](http://ec2-3-136-19-37.us-east-2.compute.amazonaws.com:3000/)

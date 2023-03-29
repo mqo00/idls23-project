@@ -1,6 +1,7 @@
 import json
 import random
 from hashlib import sha256
+from utils import write_to_json
 # PYTHONHASHSEED=0 to make the random seed fixed?
 
 # A naive dataloader class to read all test questions & answers & store in dictionary
@@ -65,26 +66,45 @@ class QAGPT_DataLoader():
             self.get_qa_trios()
         return len(self.qa_trios)
     
+    def __repr__(self):
+        return f"Total {len(self)} qa-trios."
+
     def get_random_qa_trio(self):
         if len(self.qa_trios) == 0:
             self.get_qa_trios()
         k = random.choice(list(self.qa_trios.keys()))
         d = self.qa_trios[k]
-        return d # (q, ta, gpt)
+        return k, d
     
-    def hash_trio(self, q, ta, gpt):
+    def hash_trio(self, q, gpt, ta=""):
         return sha256(q.encode()+ta.encode()+gpt.encode()).hexdigest()
     
     def get_qa_trios(self):
         with open(self.file, "r") as f:
-            data = json.loads(f)
+            data = json.load(f)
             for i, d in enumerate(data):
                 q = d["question"]
                 ta = d["ta_answer"]
                 gpt = d["gpt_answer"]
-                k = self.hash_trio(q, ta, gpt)
+                k = self.hash_trio(q, gpt, ta)
                 d["hash"] = k
                 d["order"] = i
                 self.qa_trios[k] = d
         return self.qa_trios
+
+    def add_to_db(self, q, gpt_answer):
+        k = self.hash_trio(q, gpt_answer)
+        d = {"question": q, "gpt_answer": gpt_answer, "hash": k}
+        self.qa_trios[k] = d
+        write_to_json(d, 'gpt_new_questions.json')
+        return k
+
+    # incorrect/unhelpful/great: -1/0/1?
+    def update_db(self, k, update_dict):
+        d = self.qa_trios[k]
+        # update_dict = {"label": "unhelpful", "edit": "new answer"}
+        d.update(update_dict)
+        self.qa_trios[k] = d
+        write_to_json(d, 'labeled_qa.json')
+        return d
     

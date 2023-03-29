@@ -1,0 +1,61 @@
+[
+    {
+        "question": "Even though I entered the answer for this as 1.00, it automatically changes it to 1.Is this a bug and that's why it's showing me as incorrect?",
+        "ta_answer": "Your answer\u2019s incorrect.",
+        "gpt_answer": "It is possible that the system is programmed to only accept whole numbers or integers as answers. In this case, entering 1.00 would be interpreted as a decimal and automatically rounded down to 1. \n\nTo avoid this issue in the future, you can try entering 1 instead of 1.00 or check with the instructor or course administrator to see if decimal answers are accepted.",
+        "hash": "e21da13e63d8f14bde8dddb882e225f682682583b0c48220c5d7e3a17de4050c",
+        "order": 40,
+        "label": "",
+        "edit": "It is possible that the system is programmed to only accept whole numbers or integers as answers. In this case, entering 1.00 would be interpreted as a decimal and automatically rounded down to 1. \n\nTo avoid this issue in the future, you can try entering 1 instead of 1.00 or check with the instructor or course administrator to see if decimal answers are accepted."
+    },
+    {
+        "question": "Hello TAs,I need an extension to submit HW3 part1. I am currently in my final semester and I had back to back interviews this week. I could finish 60/100 for part1.  It would be helpful if you could allow me to submit it by Sunday. I have completed the HW3 part2. I need an extension for part 1. Hoping for a positive response. Thank you,RegardsNirmal",
+        "ta_answer": "You have till Saturday to complete p1 since you\u2019ve already finished 60% of it.",
+        "gpt_answer": "Hello Nirmal,\n\nThank you for reaching out to us. We understand that you are going through a busy time with your final semester and interviews. We appreciate your effort in completing 60% of HW3 part1 and completing part2.\n\nWe can grant you an extension to submit HW3 part1 by Sunday. However, please note that this will be the only extension granted for this assignment. We encourage you to use this extra time to complete the remaining 40% of the assignment to the best of your ability.\n\nPlease let us know if you have any questions or concerns. We wish you all the best with your studies and job search.\n\nBest regards,\n[Your Name]",
+        "hash": "8451486e6344c63a24c14f8e15c87f892ab4791f9c28468953c73524f2ba7396",
+        "order": 194,
+        "label": "unhelpful",
+        "edit": "Hello Nirmal,\n\nThank you for reaching out to us. We understand that you are going through a busy time with your final semester and interviews. We appreciate your effort in completing 60% of HW3 part1 and completing part2.\n\nWe can grant you an extension to submit HW3 part1 by Sunday. However, please note that this will be the only extension granted for this assignment. We encourage you to use this extra time to complete the remaining 40% of the assignment to the best of your ability.\n\nPlease let us know if you have any questions or concerns. We wish you all the best with your studies and job search.\n\nBest regards,\n[Your Name]"
+    },
+    {
+        "question": "Hello TAs,I need an extension to submit HW3 part1. I am currently in my final semester and I had back to back interviews this week. I could finish 60/100 for part1.  It would be helpful if you could allow me to submit it by Sunday. I have completed the HW3 part2. I need an extension for part 1. Hoping for a positive response. Thank you,RegardsNirmal",
+        "ta_answer": "You have till Saturday to complete p1 since you\u2019ve already finished 60% of it.",
+        "gpt_answer": "Hello Nirmal,\n\nThank you for reaching out to us. We understand that you are going through a busy time with your final semester and interviews. We appreciate your effort in completing 60% of HW3 part1 and completing part2.\n\nWe can grant you an extension to submit HW3 part1 by Sunday. However, please note that this will be the only extension granted for this assignment. We encourage you to use this extra time to complete the remaining 40% of the assignment to the best of your ability.\n\nPlease let us know if you have any questions or concerns. We wish you all the best with your studies and job search.\n\nBest regards,\n[Your Name]",
+        "hash": "8451486e6344c63a24c14f8e15c87f892ab4791f9c28468953c73524f2ba7396",
+        "order": 194,
+        "label": "unhelpful",
+        "edit": "Hello Nirmal,\n\nThank you for reaching out to us. We understand that you are going through a busy time with your final semester and interviews. We appreciate your effort in completing 60% of HW3 part1 and completing part2.\n\nWe can grant you an extension to submit HW3 part1 by Sunday. However, please note that this will be the only extension granted for this assignment. We encourage you to use this extra time to complete the remaining 40% of the assignment to the best of your ability.\n\nPlease let us know if you have any questions or concerns. We wish you all the best with your studies and job search.\n\nBest regards,\n[Your Name]"
+    },
+    {
+        "question": "Moreover, For validation, should we also initiate a new ctcdecder every time with a larger beam width? Thank you!",
+        "ta_answer": "Because the larger your beam width, the more possible path you will discover so that you are more likely to find a better result. For your second question, you can do so, but a large beam width means the time spent for validation will increase. You need to handle that by yourself. ",
+        "gpt_answer": "It is not necessary to initiate a new CTC decoder every time for validation with a larger beam width. Instead, you can use the same CTC decoder that you used for training and validation with a smaller beam width. However, if you want to experiment with different beam widths during validation, you can create new CTC decoders with different beam widths and compare their results. Keep in mind that using a larger beam width during validation may result in better accuracy but also slower inference time.",
+        "hash": "fe9fc7973fd4cb0b4f39cb4f3b91d8ffb1fdec88bf0e81fd1ead56cdde3e92de",
+        "order": 115,
+        "label": "great",
+        "edit": "It is not necessary to initiate a new CTC decoder every time for validation with a larger beam width. Instead, you can use the same CTC decoder that you used for training and validation with a smaller beam width. However, if you want to experiment with different beam widths during validation, you can create new CTC decoders with different beam widths and compare their results. Keep in mind that using a larger beam width during validation may result in better accuracy but also slower inference time."
+    },
+    {
+        "question": "IDL Piazza Question @1108\nGetting val dist as 15 but test as 70\nHi for HW3P2 i'm Getting val dist as 15 but test as 70. How can I resolve this",
+        "gpt_answer": "It's difficult to provide a specific solution without more information about the problem and your implementation. However, here are some general tips that may help:\n\n1. Check your code for bugs: Make sure that your code is correctly implemented and that there are no syntax errors or logical mistakes. Double-check your calculations and make sure that you are using the correct variables and functions.\n\n2. Check your data: Make sure that you are using the correct data for the validation and test sets. Check that the data is correctly formatted and that there are no missing values or outliers.\n\n3. Check your hyperparameters: Make sure that you are using the correct hyperparameters for your model. Try adjusting the learning rate, batch size, or number of epochs to see if this improves your results.\n\n4. Use cross-validation: Cross-validation can help you get a better estimate of your model's performance. Try using k-fold cross-validation to see if your results are consistent across different folds.\n\n5. Seek help: If you are still having trouble, don't hesitate to ask for help. Reach out to your instructor or TA, or post a question on the course forum or Piazza.",
+        "hash": "2598edcf64f2ab8583fdccf48d270b49056048d1c2e812b04c701550341773c4",
+        "label": "unhelpful",
+        "edit": "I think I faced the same as well. The started code has a bug. It submits the comma separated list of characters instead of the concatenated string. Concatenating the string helped in rectify this (I am not sure if this was due to some implementation issue from my side but this worked).\n\n\nresults_str = [''.join(res) for res in results]\nresults = results_str\n\nThe above answer works if you do not join the strings themselves in the decode_prediction function. The starter code assumes you create the strings correctly instead of computing distances between list of characters. It may also be due to not normalizing test data as you did for training data."
+    },
+    {
+        "question": "Dear InstructorsCan you point me to a potential fix to this error?",
+        "ta_answer": "you are generating your file wrong, instead of \"index\" it should have \"id\" as column name",
+        "gpt_answer": "Of course! Can you please provide more information about the error you are encountering? What is the error message and what code are you running?",
+        "hash": "ec24198c1636ca1053a0a25485cbc1131c794fb01cfc94ad62e6bd7233961e03",
+        "order": 249,
+        "label": "unhelpful",
+        "edit": "you are generating your file wrong, instead of \"index\" it should have \"id\" as column name"
+    },
+    {
+        "question": "IDL Piazza Question @1091 skip connect\n\n\nI'm having hard time understanding what skipConnect do here.\u00a0\nIt says in write up skipConnect keep track of whether an extended symbol Sext(j) is allowed to connect\u00a0 directly to Sext(j-2) or not.\n\nIf \"IY\" in \"B , IY,\u00a0 IY, F\" is repeated, shouldn't the skipConnect be [0, 0, 0, 1, 0, 0, 0, 0, 0 ] so that we know iY is repeated here? ",
+        "gpt_answer": "The purpose of skipConnect is to keep track of whether an extended symbol Sext(j) is allowed to connect directly to Sext(j-2) or not. It does not keep track of repeated symbols. \n\nIn the example you provided, \"IY\" is repeated twice in the sequence \"B, IY, IY, F\". However, skipConnect is not used to keep track of this repetition. Instead, skipConnect is used to determine whether a particular extended symbol can be connected directly to the extended symbol two steps back in the sequence. \n\nFor example, if skipConnect[j] = 1, then Sext(j) can be connected directly to Sext(j-2). If skipConnect[j] = 0, then Sext(j) cannot be connected directly to Sext(j-2). \n\nI hope this clarifies the purpose of skipConnect. Let me know if you have any further questions!",
+        "hash": "5eb8080e9978593092a483fb176c7b44ea2858e2dcb6c666360edeace90e668f",
+        "label": "unhelpful",
+        "edit": "You don't want a skip connection from the 2nd IY to the 3rd IY. If that connection existed, then we would have no way to disambiguate between the two same symbols (and it defeats our whole purpose of adding blanks). So we don't want a path to exist, where the 2nd IY and the 3rd IY are connected with each other.\n\nHowever, we can indeed have a direct connection between B and the 2nd IY, since there's no necessity to have a blank in between the two symbols as the symbols are different. The 1 in the skipConnect array implies that the 2nd IY is allowed to connect to B."
+    }
+]

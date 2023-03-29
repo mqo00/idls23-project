@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 
+// App component
+// Model selection state variable
+// Get/Post question & answer component
+//  get sample button: q, ta, gpt
+//  submit question text box & button
+// Evlaute answer component: label true/false/edit 
+
 class App extends Component {
   state = {
     questions: ["Loading..."],
     question: "",
-    answer: ""
+    ta_answer: "",
+    gpt_answer: "",
   }
 
   componentDidMount() {
@@ -15,7 +23,7 @@ class App extends Component {
 
   fetchQuestions = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API_URL}/get_questions`,
+      `${process.env.REACT_APP_API_URL}/get_random_qa`,
     );
     const { questions } = data;
     this.setState({questions})

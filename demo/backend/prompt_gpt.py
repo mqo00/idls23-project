@@ -1,65 +1,15 @@
 import os
 import json
-import random
 import openai
 from tqdm import tqdm
 # from pathlib import Path
 from dotenv import load_dotenv
+from retrieve_data import QADataLoader
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY") # GPT4 & 3.5
 openai.organization = os.getenv("OPENAI_ORG_ID") # Organization: cmuwine
 
-# A naive dataloader class to read all test questions & answers & store in dictionary
-# class methods to randomly draw one q-a pair or yield all q-a pairs
-class QADataLoader():
-    def __init__(self, q_file='test-q.txt', a_file='test-a.txt'):
-        self.q_file = q_file
-        self.a_file = a_file
-        self.qa_pairs = dict()
-
-    def __len__(self):
-        if len(self.qa_pairs) == 0:
-            self.get_qa_pairs()
-        return len(self.qa_pairs)
-
-    def __repr__(self):
-        if len(self.qa_pairs) == 0:
-            self.get_qa_pairs()
-        pairs = 3
-        length = f"Total {len(self.qa_pairs)} q-a pairs.\n"
-        message = f"Printing first {pairs} q-a pairs:\n"
-        for i, (q, a) in enumerate(self.qa_pairs.items()):
-            if i >= pairs: break
-            message += f"{i}-th Question: {q}\nAnswer: {a}\n\n"
-        return length + message
-
-    def read_file(self, file):
-        with open(file, "r") as f:
-            data = f.read()
-        return data
-
-    def get_qa_pairs(self):
-        q_data = self.read_file(self.q_file)
-        a_data = self.read_file(self.a_file)
-        # remove the strings with length <=1
-        q_list = [q for q in q_data.split("\n") if len(q) > 1]
-        a_list = [a for a in a_data.split("\n") if len(a) > 1]
-        for q, a in zip(q_list, a_list):
-            q = q.replace(u'\xa0', u' ')
-            a = a.replace(u'\xa0', u' ')
-            self.qa_pairs[q] = a
-        return self.qa_pairs
-    
-    def get_random_qa_pair(self):
-        if len(self.qa_pairs) == 0:
-            self.get_qa_pairs()
-        q = random.choice(list(self.qa_pairs.keys()))
-        a = self.qa_pairs[q]
-        print("Question:", q)
-        print("Answer:", a)
-        return q, a
-    
 class AskGPT():
     def __init__(self, gpt="gpt-3.5-turbo", temperature=0.2):
         self.gpt = gpt
@@ -91,7 +41,7 @@ class AskGPT():
         user = {"role": "user", "content": f"Question: {q}."}
         return [system] + examples + [user]
 
-    def submit_gpt(self, q):
+    def ask_gpt(self, q):
         messages = self.format_gpt_prompt(q)
         # print(messages)
         response = openai.ChatCompletion.create(
@@ -124,7 +74,7 @@ class AskGPT():
             for i in tqdm(range(start, end)):
                 (q, a) = list(self.qa_pairs.items())[i]
                 # print(f"{i}-th question:")
-                gpt_answer = self.submit_gpt(q)
+                gpt_answer = self.ask_gpt(q)
                 data = {
                     "question": q,
                     "ta-answer": a,
@@ -134,6 +84,5 @@ class AskGPT():
                 self.write_to_json(data, file='gpt_eval.json')
             print("All questions are evaluated!")
 
-aiTA = AskGPT() # gpt = "gpt-4")
-aiTA.evaluate_qas(start=105, end=len(aiTA.QA_data))
-
+# aiTA = AskGPT() # gpt = "gpt-4")
+# aiTA.evaluate_qas(start=0, end=len(aiTA.QA_data))

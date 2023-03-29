@@ -17,24 +17,52 @@
 ## Backend
 * data processing: just for loop parse all 200 test Q&A pairs & generate responses
 
-## Available Scripts
+## Deployment on AWS EC2:
+* Connect to your instance using its Public DNS: `ec2-3-136-19-37.us-east-2.compute.amazonaws.com`
+* Public IP address: `3.136.19.37`
 
-In the project directory, you can run:
+### Setup steps
+* `ssh -i "11785_aws.pem" ubuntu@ec2-3-136-19-37.us-east-2.compute.amazonaws.com`
+* `git clone https://github.com/mqo00/idls23-project.git`
+  * do the same `.venv` setup locally
+  * `pip freeze -> requirements.txt`
+* `cd idls23-project/demo` setup python & npm
+  * `sudo apt-get update`
+  * `sudo apt install python3-pip python3-venv`
+  * `sudo apt install npm`
+* `python3 -m venv .venv` initialize virtual environment and install python packages
+  * `source .venv/bin/activate`
+  * `pip install -r requirements.txt`
+* `cd frontend` install node_modules
+  * `npm install`
 
-### `npm start`
+### Run servers (with .venv)
+* `cd backend`
+  * `python app.py` (port 8080)
+  * if default port 80, need to run with sudo like this: `sudo /home/ubuntu/idls23-project/demo/.venv/bin/python app.py`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* `cd frontend`
+  * `export REACT_APP_API_URL=http://ec2-3-136-19-37.us-east-2.compute.amazonaws.com:8080/api`
+  * `npm start` (port 3000)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Here we go! Checkout the web app at [shorturl.at/giwFY](http://ec2-3-136-19-37.us-east-2.compute.amazonaws.com:3000/)
 
-### `npm test`
+### tmux
+```
+tmux
+Ctrl+B % split panes
+Ctrl+B <- ->
+Ctrl+B d detach
+tmux ls 
+tmux attach -t 0
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Download & Upload files
+* Upload: `scp -i "11785_aws.pem" FILE ubuntu@ec2-3-136-19-37.us-east-2.compute.amazonaws.com:/idls23-project/FILE`
+* Download `scp -i "11785_aws.pem" ubuntu@ec2-3-136-19-37.us-east-2.compute.amazonaws.com:/idls23-project/FILE .`
 
-### `npm run build`
+### Build for production
+`npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -43,43 +71,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

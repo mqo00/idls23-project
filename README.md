@@ -33,6 +33,7 @@ Make a GitHub folder structure like:
 - Lit Review Google Slides: https://docs.google.com/presentation/d/1eaLwSjnPJyAChPPDPhVofv60f4IpCc6Fg6Hnc-Hce3E/edit?usp=sharing
 - Paperpile: https://paperpile.com/shared/J4seto
 - Presentation Google Slides: 
+- Demo app: shorturl.at/giwFY 
 
 ## TODOs
 * Ray: naive QA pairs (ignoring follow-up) dataset - text form (train, val, test), future step considering follow-up
@@ -58,7 +59,8 @@ Todo @ Saloni
 
 ### GPT3.5 & GPT4
 Todo @ Christina
-* BASELINE MODEL: zero-shot Prompt Engineering exploration
+* BASELINE MODEL: zero-shot Prompt Engineering exploration for GPT3.5 & GPT4
+* Future improvement: a RoBERTa-based retriever finetuned on piazza data, for building in-context examples for GPT
 
 ### Finetune LM
 Todo @ Silvia

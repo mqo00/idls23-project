@@ -4,7 +4,7 @@ test-q.txt
 test-a.txt
 test-gpt.txt
 gpt_eval.json
-gpt_responses.json
+gpt_response.json
 
 # Ignore raw data files before closer look to de-identify
 naive_dataset/

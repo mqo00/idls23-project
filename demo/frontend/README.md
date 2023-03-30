@@ -17,12 +17,12 @@
 ## Backend
 * data processing: just for loop parse all 200 test Q&A pairs & generate responses
 
-## Deployment on AWS EC2:
-* Connect to your instance using its Public DNS: `ec2-3-136-19-37.us-east-2.compute.amazonaws.com`
-* Public IP address: `3.136.19.37`
+## Deployment on AWS EC2 (updated to t2.small for 2G RAM):
+* Connect to your instance using its Public DNS: `ec2-3-22-176-0.us-east-2.compute.amazonaws.com`
+* Elastic IP address: `3.22.176.0`
 
 ### Setup steps
-* `ssh -i "11785_aws.pem" ubuntu@ec2-3-136-19-37.us-east-2.compute.amazonaws.com`
+* `ssh -i "11785_aws.pem" ubuntu@ec2-3-22-176-0.us-east-2.compute.amazonaws.com`
 * `git clone https://github.com/mqo00/idls23-project.git`
   * do the same `.venv` setup locally
   * `pip freeze -> requirements.txt`
@@ -42,11 +42,11 @@
   * if default port 80, need to run with sudo like this: `sudo /home/ubuntu/idls23-project/demo/.venv/bin/python app.py`
 
 * `cd frontend`
-  * `export REACT_APP_API_URL=http://ec2-3-136-19-37.us-east-2.compute.amazonaws.com:8080/api`
+  * `export REACT_APP_API_URL=http://3.22.176.0:8080/api`
   * or use a .env file, which contain the above if on EC2, and the follows if locally: `REACT_APP_API_URL=http://localhost:8080/api`
   * `npm start` (port 3000)
 
-* Here we go! Checkout the web app at [shorturl.at/giwFY](http://ec2-3-136-19-37.us-east-2.compute.amazonaws.com:3000/)
+* Here we go! Checkout the web app at [to-be-shorten-link](http://3.22.176.0:3000/)
 
 ### tmux
 ```
@@ -59,8 +59,8 @@ tmux attach -t 0
 ```
 
 ### Download & Upload files
-* Upload: `scp -i "11785_aws.pem" FILE ubuntu@ec2-3-136-19-37.us-east-2.compute.amazonaws.com:/idls23-project/FILE`
-* Download `scp -i "11785_aws.pem" ubuntu@ec2-3-136-19-37.us-east-2.compute.amazonaws.com:/idls23-project/FILE .`
+* Upload: `scp -i "~/.ssh/11785_aws.pem" FILE ubuntu@ec2-3-22-176-0.us-east-2.compute.amazonaws.com:/idls23-project/FILE`
+* Download `scp -i "~/.ssh/11785_aws.pem" ubuntu@ec2-3-22-176-0.us-east-2.compute.amazonaws.com:/idls23-project/FILE .`
 
 ### Build for production
 `npm run build`

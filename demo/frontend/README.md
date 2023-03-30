@@ -14,13 +14,13 @@
   * **TODO:** feedback for retriever produced examples: thumb up & down
   * additional feedback for model answer: edits & thumb up & down
 * **TODO:** Serving
-  * serve from `npm run build` created folder using `nginx` & port 80? S3? EB?
+  * actually... I'm too dumb to realize that I can just serve the frontend at [Netlify](https://www.netlify.com/pricing/) or whatever and link it to backend and then I can just use t2.micro ```_(:з」∠)_```
   * tutorials: [1](https://medium.com/@shefaliaj7/hosting-react-flask-mongodb-web-application-on-aws-part-4-hosting-web-application-b8e205c19e4), [2](https://dev.to/asim_ansari7/deploy-a-react-node-app-to-production-on-aws-2gdf), [3](https://adhasmana.medium.com/how-to-deploy-react-and-node-app-on-aws-a-better-approach-5b22e2ed2da2), [4](https://blog.miguelgrinberg.com/post/how-to-deploy-a-react--flask-project)
 
 ## Backend
 * data processing: just for loop parse all 200 test Q&A pairs & generate responses
 
-## Deployment on AWS EC2 (updated to t2.small for 2G RAM):
+## Deployment on AWS EC2:
 * Connect to your instance using its Public DNS: `ec2-3-22-176-0.us-east-2.compute.amazonaws.com`
 * Elastic IP address: `3.22.176.0`
 

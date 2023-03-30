@@ -33,7 +33,7 @@ Make a GitHub folder structure like:
 - Lit Review Google Slides: https://docs.google.com/presentation/d/1eaLwSjnPJyAChPPDPhVofv60f4IpCc6Fg6Hnc-Hce3E/edit?usp=sharing
 - Paperpile: https://paperpile.com/shared/J4seto
 - Presentation Google Slides: 
-- Demo app: [shorturl.at/giwFY](http://ec2-3-136-19-37.us-east-2.compute.amazonaws.com:3000/)
+- Demo app: http://idl.qianouma.com:3000/
 
 ## TODOs
 * Ray: naive QA pairs (ignoring follow-up) dataset - text form (train, val, test), future step considering follow-up

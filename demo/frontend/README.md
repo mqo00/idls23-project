@@ -12,7 +12,10 @@
   * **TODO:** display nli & machine eval scores, store data
 * Human-Eval:
   * **TODO:** feedback for retriever produced examples: thumb up & down
-  * additional feedback for model answer: edits & thumb up & down 
+  * additional feedback for model answer: edits & thumb up & down
+* **TODO:** Serving
+  * serve from `npm run build` created folder using `nginx` & port 80? S3? EB?
+  * tutorials: [1](https://medium.com/@shefaliaj7/hosting-react-flask-mongodb-web-application-on-aws-part-4-hosting-web-application-b8e205c19e4), [2](https://dev.to/asim_ansari7/deploy-a-react-node-app-to-production-on-aws-2gdf), [3](https://adhasmana.medium.com/how-to-deploy-react-and-node-app-on-aws-a-better-approach-5b22e2ed2da2), [4](https://blog.miguelgrinberg.com/post/how-to-deploy-a-react--flask-project)
 
 ## Backend
 * data processing: just for loop parse all 200 test Q&A pairs & generate responses
@@ -43,10 +46,11 @@
 
 * `cd frontend`
   * `export REACT_APP_API_URL=http://3.22.176.0:8080/api`
-  * or use a .env file, which contain the above if on EC2, and the follows if locally: `REACT_APP_API_URL=http://localhost:8080/api`
+  * `echo "$REACT_APP_API_URL"`
+  * or use a `.env` file, which contain the above if on EC2, and the follows if locally: `REACT_APP_API_URL=http://localhost:8080/api`
   * `npm start` (port 3000)
 
-* Here we go! Checkout the web app at [to-be-shorten-link](http://3.22.176.0:3000/)
+* Here we go! Checkout the web app at [shorturl.at/ntJ26](http://3.22.176.0:3000/)
 
 ### tmux
 ```
@@ -58,8 +62,20 @@ tmux ls
 tmux attach -t 0
 ```
 
+### EBS & Elastic IP
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
+* ```sudo chown `whoami` /vol```
+
+### Check RAM
+* `node`
+  * `v8.getHeapStatistics()`
+  * `export NODE_OPTIONS="--max-old-space-size=15000"`
+  * `echo "$NODE_OPTIONS"`
+
+
 ### Download & Upload files
-* Upload: `scp -i "~/.ssh/11785_aws.pem" FILE ubuntu@ec2-3-22-176-0.us-east-2.compute.amazonaws.com:/idls23-project/FILE`
+* Upload: `scp -i "~/.ssh/11785_aws.pem" .env ubuntu@ec2-3-22-176-0.us-east-2.compute.amazonaws.com:/file/idls23-project/demo/backend/.env`
 * Download `scp -i "~/.ssh/11785_aws.pem" ubuntu@ec2-3-22-176-0.us-east-2.compute.amazonaws.com:/idls23-project/FILE .`
 
 ### Build for production
@@ -72,3 +88,8 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### Other deployment options that I have no time to explore
+* [PythonAnywhere](https://www.pythonanywhere.com/pricing/)
+* [Heroku](https://www.heroku.com/pricing)
+* [Firebase](https://firebase.google.com/pricing)

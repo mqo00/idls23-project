@@ -51,7 +51,7 @@ Christina
 ## Data
 * In this study, we plan to use the previous 6 semesters' piazza data from the course of CMU LTI 11785 Intro to Deep Learning (from 2020 Spring to 2022 Fall).
 * First, we clean the raw data and create a "naive" dataset, including students' questions and instructors' answers.
-** dsad
+    * 
 * Todo
 
 

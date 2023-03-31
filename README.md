@@ -53,6 +53,7 @@ Christina
 * First, we clean the raw data and create a "naive" dataset, including students' questions and instructors' answers. The size of "naive" QA pairs is 9900,
     * We split the "naive dataset" into train:val:test=64%:16%:20%(6336:1980:1584).
 * Todo
+    * Add content and follow-up into dataset
 
 
 

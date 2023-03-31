@@ -17,7 +17,8 @@ function RandQA ({newQA, reset}) {
         setQA({question, ta_answer, gpt_answer, hash});
         newQA({"key": hash, "answer": gpt_answer});
     }
-
+    
+    // eslint-disable-next-line
     useEffect (() => {getRandomQA()}, [reset]);
     
     // display the question and both answers side by side

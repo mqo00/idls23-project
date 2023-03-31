@@ -31,8 +31,7 @@
   * `pip freeze -> requirements.txt`
 * `cd idls23-project/demo` setup python & npm
   * `sudo apt-get update`
-  * `sudo apt install python3-pip python3-venv`
-  * `sudo apt install npm`
+  * `sudo apt install python3-pip python3-venv npm`
 * `python3 -m venv .venv` initialize virtual environment and install python packages
   * `source .venv/bin/activate`
   * `pip install -r requirements.txt`
@@ -65,7 +64,10 @@ tmux attach -t 0
 ### EBS & Elastic IP
 * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
 * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
-* ```sudo chown `whoami` /vol```
+* `sudo mkfs -t xfs /dev/xvdf` to install a file system on a new EBS volume
+  * `sudo mkdir $YOUR_DIR_NAME`
+  * `sudo mount /dev/xvdf $YOUR_DIR_NAME`
+* ```sudo chown `whoami` $YOUR_DIR_NAME```
 
 ### Check RAM
 * `node`

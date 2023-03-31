@@ -14,6 +14,7 @@ function HumanEvalA ({qaKey, gpt_answer, resetQA}) {
         improve: gpt_answer,
     });
 
+    // eslint-disable-next-line
     useEffect (() => {setHumanEval({...humanEval, label: "", improve: gpt_answer})}, [gpt_answer]);
     
     const handleChange = (event) => {
@@ -25,7 +26,7 @@ function HumanEvalA ({qaKey, gpt_answer, resetQA}) {
         event.preventDefault();
         const { label, improve } = humanEval;
         const update_dict = {"label": label, "edit": improve }
-        const res = await post_feedback(qaKey, update_dict);
+        await post_feedback(qaKey, update_dict);
         setHumanEval({...humanEval, label: "", improve: placeholder});
         resetQA();
     }

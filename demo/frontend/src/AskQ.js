@@ -12,6 +12,7 @@ function AskQ ({newQA, reset}) {
         newQA({"key": "", "answer": ""});
         setQuestion("IDL Piazza Question @");
         setAnswer("");
+    // eslint-disable-next-line
     }, [reset]);
 
     const handleChange = (event) => {

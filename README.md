@@ -49,6 +49,7 @@ Christina
 # Experiment
 
 ## Data
+* In this study, we plan to use the previous 6 semesters' piazza data from the course of CMU LTI 11785 Intro to Deep Learning (from 2020 Spring to 2022 Fall).
 Todo @ Ray
 
 

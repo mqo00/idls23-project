@@ -29,17 +29,22 @@ Make a GitHub folder structure like:
 ```
 
 ## Documents 
-- Overleaf Project Proposal (read-only link): https://www.overleaf.com/read/nxjzhtkrbtmb
+- Demo app: http://ai-ta.qianouma.com/
+- Overleaf Project Writeup (read-only link): https://www.overleaf.com/read/nxjzhtkrbtmb
 - Lit Review Google Slides: https://docs.google.com/presentation/d/1eaLwSjnPJyAChPPDPhVofv60f4IpCc6Fg6Hnc-Hce3E/edit?usp=sharing
 - Paperpile: https://paperpile.com/shared/J4seto
 - Presentation Google Slides: 
-- Demo app: http://idl.qianouma.com:3000/
 
 ## TODOs
 * Ray: naive QA pairs (ignoring follow-up) dataset - text form (train, val, test), future step considering follow-up
 * Saloni: evaluation (metric other than human eval), future step considering QA API for TAs?
-* Christina: baseline, future step RoBERTa retriever, also build a simple react or flask webpage for playing around with the model
 * Silvia: fine-tune RoBERTa downstream task
+
+Christina
+* [DONE] BASELINE MODEL: zero-shot Prompt Engineering exploration for GPT3.5 & GPT4
+* [DONE] built a simple react & flask webpage for human feedback/labeling and demo
+* [TODO] a RoBERTa-based retriever finetuned on piazza data, for building in-context examples for GPT
+
 
 # Experiment
 
@@ -58,9 +63,16 @@ Todo @ Saloni
 ## Model 
 
 ### GPT3.5 & GPT4
-Todo @ Christina
-* BASELINE MODEL: zero-shot Prompt Engineering exploration for GPT3.5 & GPT4
-* Future improvement: a RoBERTa-based retriever finetuned on piazza data, for building in-context examples for GPT
+```
+Baseline: gpt-3.5-turbo
+Temperature = 0.2
+Prompt (zeroshot): 
+[
+  {"role": "system", "content": "You are a helpful and experienced teaching assistant of a deep learning course."},
+  {"role": "user", "content": f"Question: {q}."}
+]
+```
+### Finetune Retriever
 
 ### Finetune LM
 Todo @ Silvia

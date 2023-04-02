@@ -26,9 +26,7 @@ function App() {
     setState(prevState => { return {...prevState, askq: !prevState.askq} } );
   }
 
-  const setModel = (model) => {
-    setState(prevState => { return {...prevState, model: model} } );
-  }
+  // const setModel = (model) => { setState(prevState => { return {...prevState, model: model} } );}
 
   return (
     <div className="App">

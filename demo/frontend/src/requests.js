@@ -24,6 +24,19 @@ async function postq_geta(question) {
     }
 }
 
+// post_prompt_q: post prompt to backend and get answer & full prompt (messages)
+async function post_prompt_q(question, num_rand_ex, fix_prompt) {
+    try {
+        const { data } = await axios.post(
+            `${process.env.REACT_APP_API_URL}/submit_prompt_question`, { question, num_rand_ex, fix_prompt }
+        );
+        // console.log(data);
+        return data; // messages, answer
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 // post_feedback: post human evaluation to backend
 async function post_feedback(key, update_dict) {
     try {
@@ -38,4 +51,4 @@ async function post_feedback(key, update_dict) {
     }
 }
 
-export {get_qa, postq_geta, post_feedback};
+export {get_qa, postq_geta, post_feedback, post_prompt_q};

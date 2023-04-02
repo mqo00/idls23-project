@@ -1,7 +1,7 @@
 import json
 from flask import Flask, request
 from flask_cors import CORS
-from prompt_gpt import AskGPT
+from prompt_gpt import AskGPT, TestGPT
 from retrieve_data import QAGPT_DataLoader
 
 app = Flask(__name__)
@@ -9,6 +9,7 @@ CORS(app)
 
 aiTA = AskGPT()
 QAGPT_Data = QAGPT_DataLoader()
+promptTA = TestGPT(QAGPT_Data)
 
 # tutorial: https://adamraudonis.medium.com/how-to-deploy-a-website-on-aws-with-docker-flask-react-from-scratch-d0845ebd9da4
 @app.route('/')  
@@ -24,10 +25,21 @@ def get_random_qa():
 @app.route('/api/submit_question', methods=["POST"])
 def submit_question():
     question = json.loads(request.data)["question"]
-    gpt_answer = aiTA.ask_gpt(question)
+    gpt_answer = aiTA.ask_gpt(question)[0]
     # store an entry in the database, hash the question and answer
     k = QAGPT_Data.add_to_db(question, gpt_answer)
     return {"answer": gpt_answer, "hash": k}
+
+@app.route('/api/submit_prompt_question', methods=["POST"])
+def submit_prompt_question():
+    data = json.loads(request.data)
+    question = data["question"]
+    num_rand_ex = int(data["num_rand_ex"])
+    fix_prompt = data["fix_prompt"]
+    promptTA.set_fix_promt(fix_prompt)
+    gpt_answer, messages = promptTA.ask_gpt(question, num_rand_ex)
+    k = QAGPT_Data.add_to_db(question, gpt_answer)
+    return {"answer": gpt_answer, "hash": k, "messages": messages}
 
 @app.route('/api/submit_feedback', methods=["POST"])
 def submit_feedback():

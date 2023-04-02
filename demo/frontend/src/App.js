@@ -26,15 +26,20 @@ function App() {
     setState(prevState => { return {...prevState, askq: !prevState.askq} } );
   }
 
+  const setModel = (model) => {
+    setState(prevState => { return {...prevState, model: model} } );
+  }
+
   return (
     <div className="App">
       <div className='title'>
-        <h1>IDL S23 Final Project Demo: AI TA for Piazza</h1>
+        <h1>Final Project Demo: AI TA for Piazza</h1>
       </div>
       <div className='model'>
         <h2>Model: {state.model} </h2>
       </div>
       <div className='qa-demo'>
+      {/* <button className="button-19 green" onClick={() => setModel("gpt-3.5-turbo + prompt engineering")}>Prompt Exploration</button> */}
       <button className="button-19" onClick={flipAskq}>{state.askq ? "Get Random Example" : "Ask Your Own Question"}</button>
         {state.askq ? <AskQ newQA={newQA} reset={state.reset} /> : <RandQA newQA={newQA} reset={state.reset} />}
       </div>

@@ -120,6 +120,14 @@
   color: white;
 }
 
+.button-19.green {
+  background-color: #459847;
+}
+
+.button-19.green:after {
+  background-color: #5bc15b;
+}
+
 /* Duolingo Button CSS https://getcssscan.com/css-buttons-examples */
 .button-19 {
   appearance: button;

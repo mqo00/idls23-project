@@ -113,3 +113,27 @@ class QAGPT_DataLoader():
         write_to_json(d, 'label_qa.json')
         return d
     
+class TopKQA_DataLoader():
+    def __init__(self, qa_file='topk.json'):
+        self.qa_file = qa_file
+        self.qa_pairs = dict()
+    
+    def __len__(self):
+        if len(self.qa_pairs) == 0:
+            self.get_qa_pairs()
+        return len(self.qa_pairs)
+
+    def get_qa_pairs(self):
+        with open(self.qa_file) as f:
+            json_list = json.load(f)[0]
+            print(len(json_list))
+            for d in json_list:
+                q = d["question"]
+                self.qa_pairs[q] = d
+        return self.qa_pairs
+    
+    def get_topk_qa_pair(self, q, k=1):
+        if len(self.qa_pairs) == 0:
+            self.get_qa_pairs()
+        d = self.qa_pairs[q]
+        return d["neighbors"][:k]

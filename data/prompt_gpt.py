@@ -4,7 +4,7 @@ import time
 import openai
 from tqdm import tqdm
 from dotenv import load_dotenv
-from retrieve_data import LabeledQA_DataLoader, write_to_json
+from retrieve_data import LabeledQA_DataLoader, TopKQA_DataLoader, write_to_json
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY") # GPT4 & 3.5
@@ -115,35 +115,6 @@ class EvalGPT(AskGPT):
                 time.sleep(2) # avoid rate limit
         print("All questions are evaluated!")
 
-# GPT = EvalGPT()
-# length = len(GPT.qa_pairs)
-# for n in [0, 1, 3, 5, 10, 15, 20]:
-#     GPT.evaluate_qas(start=0, end=length, num_examples=n)
-class TopKQA_DataLoader():
-    def __init__(self, qa_file='topk.json'):
-        self.qa_file = qa_file
-        self.qa_pairs = dict()
-    
-    def __len__(self):
-        if len(self.qa_pairs) == 0:
-            self.get_qa_pairs()
-        return len(self.qa_pairs)
-
-    def get_qa_pairs(self):
-        with open(self.qa_file) as f:
-            json_list = json.load(f)[0]
-            print(len(json_list))
-            for d in json_list:
-                q = d["question"]
-                self.qa_pairs[q] = d
-        return self.qa_pairs
-    
-    def get_topk_qa_pair(self, q, k=1):
-        if len(self.qa_pairs) == 0:
-            self.get_qa_pairs()
-        d = self.qa_pairs[q]
-        return d["neighbors"][:k]
-
 class TopKGPT(AskGPT):
     def __init__(self, gpt="gpt-3.5-turbo", temperature=0.2, qa_file='topk.json'):
         super().__init__(gpt, temperature)
@@ -186,5 +157,4 @@ class TopKGPT(AskGPT):
 
 for t in [0, 0.5, 0.8, 1.0]: # 0.2
     GPT = TopKGPT(temperature=t, qa_file='topk-sample.json')
-    # for n in [1, 15]:
     GPT.evaluate_qas(n=1)
